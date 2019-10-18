@@ -1,13 +1,13 @@
 {
-    "title": "OpenShift Workshop Labs",
-    "plugins": ["fancybox"],
+    "title": "Sample Gitbook Application",
+    "plugins": [ 
+        "popup", "theme-darkblue"
+      ],
     "links": {
         "sidebar": {
-            "Download PDF": "/download.pdf"
+            "Contact us / Support": "https://www.gitbook.com/contact"
         }
     },
     "pluginsConfig": {
-        "fancybox": {}
     }
-}		
-
+}	
