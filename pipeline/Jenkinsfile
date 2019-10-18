@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    openshift.withProject() {
+                    opneshift.withCluster(){
+                        openshift.withProject() {
                             def buildSelector = bc.startBuild(gitbook-centos-docker)
                             buildSelector.logs('-f')
                     }
@@ -14,3 +15,4 @@ pipeline {
         }
      }
    }
+}
