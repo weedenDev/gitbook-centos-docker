@@ -1,17 +1,13 @@
-pipeline {
-    agent any
+node {
+    stage 'build'
+        openshiftBuild(bldCfg: 'gitbook-centos-docker')
+    stage 'deploy'
+        sh "oc rollout latest dc/gitbook-centos-docker"
 
-    stages {
-        stage('Build') {
-            steps {
-                script {
-                    openshift.withCluster(){
-                        openshift.withProject() {
-                            openshift.startBuild("gitbook-centos-docker")
-                    }
-                }
-            }
-        }
-     }
-   }
+    stage 'ask for promotion'
+        input id: 'Approve01', message: 'Wanna push to prod?????', ok: 'HANG TIGHT!'
+
+    stage 'tag and promote'
+        sh "oc tag gitbook-centos-docker:latest gitbook-centos-docker:prod"
+
 }
