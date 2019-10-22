@@ -17,6 +17,6 @@ RUN cd ${APP_ROOT}/docs && \
 WORKDIR ${APP_ROOT}
 
 EXPOSE 4000
-
+USER 1001
 # Do the thing
 CMD ["/bin/bash", "-c", "${APP_ROOT}/bin/run.sh"]
