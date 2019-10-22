@@ -1,4 +1,4 @@
-    node {
+node {
     stage 'build'
         openshiftBuild(bldCfg: 'gitbook-centos-docker')
     stage 'deploy'
